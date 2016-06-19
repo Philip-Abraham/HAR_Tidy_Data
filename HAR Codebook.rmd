@@ -1,0 +1,199 @@
+---
+title: "Human Activity Recognition Processing Data Codebook"
+author: "Philip Abraham"
+date: "June 18th, 2016"
+output:
+  html_document:
+    keep_md: yes
+---
+
+## Project Description
+The purpose of this project is to  clean a given raw data set captured from inertial measurement sensors built in a user's smartphone to track his or her motion.
+
+##Study design and data processing
+
+###Collection of the raw data
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING). The raw data was captured from inertial measurement sensors worn on a user's body or built in a user's smartphone to track his or her motion. The raw data is stored in the given Inertial Signals folder.   
+
+###Notes on the original (raw) data 
+The given train and test X data folders reflects values calculated (example: mean, standard deviation etc.) from the raw inertial measurements data contained in the Inertial Signals folder.  
+
+One of the requirements of the project assignment is to extract only the measurements on the mean and standard deviation for each measurement. Since the mean and standard deviation has already been provided for us in the train and test X data folders for each variable, I only focused on the values provided in the train and test X data folders for our tidy data manipulation tasks.
+
+Additionally, we don't have column names given for the inertial measurements data. Therefore, there's is no way to match this data with the values in the train and test X data folders.
+
+So I conclude that it does not make sense to merge the Inertial Signals folder data with the train and test X data folder data.  
+
+##Creating the tidy datafile
+These were the steps taken to create the tidy data set.  
+
+###Guide to create the tidy data file  
+#### Download and read the web data to R
+The zipfile containing the text files was downloaded to R, and read into R objects.  
+#### Merge all data sets downloaded  
+Merges the training and the test sets to create one data set.  
+###Cleaning of the data
+#### Create a data set with only the required variables for this project  
+Extracted only the measurements on the mean and standard deviation for each variable.  
+#### Clarify Activity Labels  
+Used descriptive activity names to name the activities in the data set.  
+#### Clarify Variable Names  
+Appropriately labeled the data set with descriptive variable names.  
+#### Tidy Data Set  
+Created tidy data set with the average of each variable for each activity and each subject. 
+#### Created a text file for the tidy data set
+Wrote the tidy dataset to a text file -: tiny_data_Average.txt
+
+##Description of the variables in the tiny_data_Average.txt file
+
+### Dimensions of the dataset
+The tidy data set contains a total of 180 rows(30 subjects x 6 activities). There are 88 columns in the dataset. The SubJect and Activity Columns are first two columns. The remaining 86 columns represent the calculated averages of each variable grouped by each activity per each subject.  
+
+### Description of the data variables
+
+### Variables present in the tiny_data_Average data set:  
+The Subject Variable has one of the integer values (1-30), identifying the subject whose measurement was recorded for a particular activity.  
+And, the Activity variable had these possible character values - "Laying", "Sitting", "Standing",  "Walking", "WalkingDown", "WalkingUp" - reflecting the activities each subject participated in and the measurements recorded on the sensors in the smartphone the subjects carried on them. 
+
+The rest of the 86 variables reflect the calculated average values for each of the the smartphone data variables given in the test and train X folders.  
+
+Below are the 88 variables of the tidy data set:  
+ [1] "Subject"                               [2] "Activity"                             
+ [3] "TIMEBodyAccMEANinAxisX"                [4] "TIMEBodyAccMEANinAxisY"               
+ [5] "TIMEBodyAccMEANinAxisZ"                [6] "TIMEBodyAccSTDDEVinAxisX"             
+ [7] "TIMEBodyAccSTDDEVinAxisY"              [8] "TIMEBodyAccSTDDEVinAxisZ"             
+ [9] "TIMEGravityAccMEANinAxisX"             [10] "TIMEGravityAccMEANinAxisY"            
+[11] "TIMEGravityAccMEANinAxisZ"             [12] "TIMEGravityAccSTDDEVinAxisX"          
+[13] "TIMEGravityAccSTDDEVinAxisY"           [14] "TIMEGravityAccSTDDEVinAxisZ"          
+[15] "TIMEBodyAccJerkMEANinAxisX"            [16] "TIMEBodyAccJerkMEANinAxisY"           
+[17] "TIMEBodyAccJerkMEANinAxisZ"            [18] "TIMEBodyAccJerkSTDDEVinAxisX"         
+[19] "TIMEBodyAccJerkSTDDEVinAxisY"          [20] "TIMEBodyAccJerkSTDDEVinAxisZ"         
+[21] "TIMEBodyGyroMEANinAxisX"               [22] "TIMEBodyGyroMEANinAxisY"              
+[23] "TIMEBodyGyroMEANinAxisZ"               [24] "TIMEBodyGyroSTDDEVinAxisX"            
+[25] "TIMEBodyGyroSTDDEVinAxisY"             [26] "TIMEBodyGyroSTDDEVinAxisZ"            
+[27] "TIMEBodyGyroJerkMEANinAxisX"           [28] "TIMEBodyGyroJerkMEANinAxisY"          
+[29] "TIMEBodyGyroJerkMEANinAxisZ"           [30] "TIMEBodyGyroJerkSTDDEVinAxisX"        
+[31] "TIMEBodyGyroJerkSTDDEVinAxisY"         [32] "TIMEBodyGyroJerkSTDDEVinAxisZ"        
+[33] "TIMEBodyAccMagMEANinAxis"              [34] "TIMEBodyAccMagSTDDEVinAxis"           
+[35] "TIMEGravityAccMagMEANinAxis"           [36] "TIMEGravityAccMagSTDDEVinAxis"        
+[37] "TIMEBodyAccJerkMagMEANinAxis"          [38] "TIMEBodyAccJerkMagSTDDEVinAxis"       
+[39] "TIMEBodyGyroMagMEANinAxis"             [40] "TIMEBodyGyroMagSTDDEVinAxis"          
+[41] "TIMEBodyGyroJerkMagMEANinAxis"         [42] "TIMEBodyGyroJerkMagSTDDEVinAxis"      
+[43] "FREQBodyAccMEANinAxisX"                [44] "FREQBodyAccMEANinAxisY"               
+[45] "FREQBodyAccMEANinAxisZ"                [46] "FREQBodyAccSTDDEVinAxisX"             
+[47] "FREQBodyAccSTDDEVinAxisY"              [48] "FREQBodyAccSTDDEVinAxisZ"             
+[49] "FREQBodyAccMEANinFreqAxisX"            [50] "FREQBodyAccMEANinFreqAxisY"           
+[51] "FREQBodyAccMEANinFreqAxisZ"            [52] "FREQBodyAccJerkMEANinAxisX"           
+[53] "FREQBodyAccJerkMEANinAxisY"            [54] "FREQBodyAccJerkMEANinAxisZ"           
+[55] "FREQBodyAccJerkSTDDEVinAxisX"          [56] "FREQBodyAccJerkSTDDEVinAxisY"         
+[57] "FREQBodyAccJerkSTDDEVinAxisZ"          [58] "FREQBodyAccJerkMEANinFreqAxisX"       
+[59] "FREQBodyAccJerkMEANinFreqAxisY"        [60] "FREQBodyAccJerkMEANinFreqAxisZ"       
+[61] "FREQBodyGyroMEANinAxisX"               [62] "FREQBodyGyroMEANinAxisY"              
+[63] "FREQBodyGyroMEANinAxisZ"               [64] "FREQBodyGyroSTDDEVinAxisX"            
+[65] "FREQBodyGyroSTDDEVinAxisY"             [66] "FREQBodyGyroSTDDEVinAxisZ"            
+[67] "FREQBodyGyroMEANinFreqAxisX"           [68] "FREQBodyGyroMEANinFreqAxisY"          
+[69] "FREQBodyGyroMEANinFreqAxisZ"           [70] "FREQBodyAccMagMEANinAxis"             
+[71] "FREQBodyAccMagSTDDEVinAxis"            [72] "FREQBodyAccMagMEANinFreqAxis"         
+[73] "FREQBodyBodyAccJerkMagMEANinAxis"      [74] "FREQBodyBodyAccJerkMagSTDDEVinAxis"   
+[75] "FREQBodyBodyAccJerkMagMEANinFreqAxis"  [76] "FREQBodyBodyGyroMagMEANinAxis"        
+[77] "FREQBodyBodyGyroMagSTDDEVinAxis"       [78] "FREQBodyBodyGyroMagMEANinFreqAxis"    
+[79] "FREQBodyBodyGyroJerkMagMEANinAxis"     [80] "FREQBodyBodyGyroJerkMagSTDDEVinAxis"  
+[81] "FREQBodyBodyGyroJerkMagMEANinFreqAxis" [82] "angle(tBodyAccMean,gravity)"          
+[83] "angle(tBodyAccJerkMean),gravityMean)"  [84] "angle(tBodyGyroMean,gravityMean)"     
+[85] "angle(tBodyGyroJerkMean,gravityMean)"  [86] "angle(X,gravityMean)"                 
+[87] "angle(Y,gravityMean)"                  [88] "angle(Z,gravityMean)"   
+
+### Structure of the 88 variables in the tiny_data_Average data set:   
+
+#### Classes 'data.table' and 'data.frame':180 obs. of  88 variables:
+ Vatiable Name                          |Variable Class
+ ------------------------------------------------------
+ * Subject                              | integer  
+ * Activity                             | character  
+ * TIMEBodyAccMEANinAxisX               | numeric  
+ * TIMEBodyAccMEANinAxisY               | numeric 
+ * TIMEBodyAccMEANinAxisZ               | numeric 
+ * TIMEBodyAccSTDDEVinAxisX             | numeric  
+ * TIMEBodyAccSTDDEVinAxisY             | numeric 
+ * TIMEBodyAccSTDDEVinAxisZ             | numeric 
+ * TIMEGravityAccMEANinAxisX            | numeric  
+ * TIMEGravityAccMEANinAxisY            | numeric 
+ * TIMEGravityAccMEANinAxisZ            | numeric  
+ * TIMEGravityAccSTDDEVinAxisX          | numeric  
+ * TIMEGravityAccSTDDEVinAxisY          | numeric 
+ * TIMEGravityAccSTDDEVinAxisZ          | numeric  
+ * TIMEBodyAccJerkMEANinAxisX           | numeric  
+ * TIMEBodyAccJerkMEANinAxisY           | numeric  
+ * TIMEBodyAccJerkMEANinAxisZ           | numeric 
+ * TIMEBodyAccJerkSTDDEVinAxisX         | numeric  
+ * TIMEBodyAccJerkSTDDEVinAxisY         | numeric 
+ * TIMEBodyAccJerkSTDDEVinAxisZ         | numeric  
+ * TIMEBodyGyroMEANinAxisX              | numeric 
+ * TIMEBodyGyroMEANinAxisY              | numeric 
+ * TIMEBodyGyroMEANinAxisZ              | numeric  
+ * TIMEBodyGyroSTDDEVinAxisX            | numeric  
+ * TIMEBodyGyroSTDDEVinAxisY            | numeric  
+ * TIMEBodyGyroSTDDEVinAxisZ            | numeric  
+ * TIMEBodyGyroJerkMEANinAxisX          | numeric 
+ * TIMEBodyGyroJerkMEANinAxisY          | numeric  
+ * TIMEBodyGyroJerkMEANinAxisZ          | numeric 
+ * TIMEBodyGyroJerkSTDDEVinAxisX        | numeric  
+ * TIMEBodyGyroJerkSTDDEVinAxisY        | numeric 
+ * TIMEBodyGyroJerkSTDDEVinAxisZ        | numeric  
+ * TIMEBodyAccMagMEANinAxis             | numeric  
+ * TIMEBodyAccMagSTDDEVinAxis           | numeric
+ * TIMEGravityAccMagMEANinAxis          | numeric
+ * TIMEGravityAccMagSTDDEVinAxis        | numeric
+ * TIMEBodyAccJerkMagMEANinAxis         | numeric
+ * TIMEBodyAccJerkMagSTDDEVinAxis       | numeric  
+ * TIMEBodyGyroMagMEANinAxis            | numeric 
+ * TIMEBodyGyroMagSTDDEVinAxis          | numeric
+ * TIMEBodyGyroJerkMagMEANinAxis        | numeric
+ * TIMEBodyGyroJerkMagSTDDEVinAxis      | numeric
+ * FREQBodyAccMEANinAxisX               | numeric 
+ * FREQBodyAccMEANinAxisY               | numeric 
+ * FREQBodyAccMEANinAxisZ               | numeric 
+ * FREQBodyAccSTDDEVinAxisX             | numeric
+ * FREQBodyAccSTDDEVinAxisY             | numeric
+ * FREQBodyAccSTDDEVinAxisZ             | numeric
+ * FREQBodyAccMEANinFreqAxisX           | numeric 
+ * FREQBodyAccMEANinFreqAxisY           | numeric
+ * FREQBodyAccMEANinFreqAxisZ           | numeric
+ * FREQBodyAccJerkMEANinAxisX           | numeric
+ * FREQBodyAccJerkMEANinAxisY           | numeric 
+ * FREQBodyAccJerkMEANinAxisZ           | numeric
+ * FREQBodyAccJerkSTDDEVinAxisX         | numeric
+ * FREQBodyAccJerkSTDDEVinAxisY         | numeric
+ * FREQBodyAccJerkSTDDEVinAxisZ         | numeric
+ * FREQBodyAccJerkMEANinFreqAxisX       | numeric 
+ * FREQBodyAccJerkMEANinFreqAxisY       | numeric
+ * FREQBodyAccJerkMEANinFreqAxisZ       | numeric
+ * FREQBodyGyroMEANinAxisX              | numeric 
+ * FREQBodyGyroMEANinAxisY              | numeric
+ * FREQBodyGyroMEANinAxisZ              | numeric
+ * FREQBodyGyroSTDDEVinAxisX            | numeric 
+ * FREQBodyGyroSTDDEVinAxisY            | numeric
+ * FREQBodyGyroSTDDEVinAxisZ            | numeric
+ * FREQBodyGyroMEANinFreqAxisX          | numeric
+ * FREQBodyGyroMEANinFreqAxisY          | numeric 
+ * FREQBodyGyroMEANinFreqAxisZ          | numeric
+ * FREQBodyAccMagMEANinAxis             | numeric
+ * FREQBodyAccMagSTDDEVinAxis           | numeric
+ * FREQBodyAccMagMEANinFreqAxis         | numeric
+ * FREQBodyBodyAccJerkMagMEANinAxis     | numeric
+ * FREQBodyBodyAccJerkMagSTDDEVinAxis   | numeric
+ * FREQBodyBodyAccJerkMagMEANinFreqAxis | numeric 
+ * FREQBodyBodyGyroMagMEANinAxis        | numeric 
+ * FREQBodyBodyGyroMagSTDDEVinAxis      | numeric
+ * FREQBodyBodyGyroMagMEANinFreqAxis    | numeric 
+ * FREQBodyBodyGyroJerkMagMEANinAxis    | numeric 
+ * FREQBodyBodyGyroJerkMagSTDDEVinAxis  | numeric
+ * FREQBodyBodyGyroJerkMagMEANinFreqAxis| numeric
+ * angle(tBodyAccMean,gravity)          | numeric
+ * angle(tBodyAccJerkMean),gravityMean) | numeric
+ * angle(tBodyGyroMean,gravityMean)     | numeric
+ * angle(tBodyGyroJerkMean,gravityMean) | numeric
+ * angle(X,gravityMean)                 | numeric
+ * angle(Y,gravityMean)                 | numeric 
+ * angle(Z,gravityMean)                 | numeric
+
